@@ -10,4 +10,3 @@ Size Effect in Ultimate Tensile Strength of Brittle (and Ductile?) specimens
 - AE24B022 - Saksham
 - AE24B016 - Naief
 - AE24B024 - Tharun
-
