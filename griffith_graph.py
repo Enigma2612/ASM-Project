@@ -56,7 +56,7 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(fname='uts_vs_dia', dpi=600, bbox_inches='tight')
+plt.savefig(fname='Graphs/uts_vs_dia', dpi=600, bbox_inches='tight')
 plt.show()
 
 
@@ -72,5 +72,5 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(fname='uts_vs_area', dpi=600, bbox_inches='tight')
+plt.savefig('Graphs/uts_vs_area', dpi=600, bbox_inches='tight')
 plt.show()
