@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#DATA HANDLING -------------------
+# DATA HANDLING -------------------
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
@@ -27,21 +27,22 @@ areas = np.array(dias)**2 * np.pi / 4
 
 dia_to_uts = {}
 
-for d,u in uts_vs_dia:
-    dia_to_uts[d] = dia_to_uts.get(d,[]) + [u]
+for d, u in uts_vs_dia:
+    dia_to_uts[d] = dia_to_uts.get(d, []) + [u]
 
 plot_dias = []
 avg_uts = []
 
-for d,u in dia_to_uts.items():
+for d, u in dia_to_uts.items():
     plot_dias.append(d)
     avg_uts.append(sum(u)/len(u))
 
 plot_areas = np.array(plot_dias)**2 * np.pi / 4
 
-#FUNCTIONS-----------
+# FUNCTIONS-----------
 
-def powerfit(x,y):
+
+def powerfit(x, y):
     coeffs = np.polyfit(np.log(x), np.log(y), 1)
     x_vals = np.linspace(np.log(min(x)), np.log(max(x)), 100)
     y_vals = np.polyval(coeffs, x_vals)
@@ -50,7 +51,8 @@ def powerfit(x,y):
     y_vals = np.exp(y_vals)
     return x_vals, y_vals
 
-#PLOTTING-------------
+# PLOTTING-------------
+
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
@@ -60,9 +62,10 @@ plt.figure(figsize=(8, 5))
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
 # plt.plot(plot_dias, avg_uts, color='orange', linewidth=2.5, label='Trend')
 
-x,y = powerfit(plot_dias, avg_uts)
+x, y = powerfit(plot_dias, avg_uts)
 
-plt.plot(x,y, alpha=0.7, color="#F07408", linewidth = 2.5, label = 'Power Law Fit')
+plt.plot(x, y, alpha=0.7, color="#F07408",
+         linewidth=2.5, label='Power Law Fit')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -78,8 +81,9 @@ plt.show()
 plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-x,y = powerfit(plot_areas, avg_uts)
-plt.plot(x,y, alpha = 0.7, color="#5A09BC", linewidth=2.5, label='Power Law Fit')
+x, y = powerfit(plot_areas, avg_uts)
+plt.plot(x, y, alpha=0.7, color="#5A09BC",
+         linewidth=2.5, label='Power Law Fit')
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
 plt.ylabel("UTS (MPa)", fontsize=12)
