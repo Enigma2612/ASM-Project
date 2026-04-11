@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-#DATA HANDLING -------------------
+# DATA HANDLING -------------------
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
@@ -27,20 +27,20 @@ areas = np.array(dias)**2 * np.pi / 4
 
 dia_to_uts = {}
 
-for d,u in uts_vs_dia:
-    dia_to_uts[d] = dia_to_uts.get(d,[]) + [u]
+for d, u in uts_vs_dia:
+    dia_to_uts[d] = dia_to_uts.get(d, []) + [u]
 
 plot_dias = []
 avg_uts = []
 
-for d,u in dia_to_uts.items():
+for d, u in dia_to_uts.items():
     plot_dias.append(d)
     avg_uts.append(sum(u)/len(u))
 
 plot_areas = np.array(plot_dias)**2 * np.pi / 4
 
 
-#PLOTTING-------------
+# PLOTTING-------------
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
