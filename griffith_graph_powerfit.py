@@ -63,7 +63,6 @@ plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 plt.figure(figsize=(8, 5))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
-# plt.plot(plot_dias, avg_uts, color='orange', linewidth=2.5, label='Trend')
 
 x, y, a, b = powerfit(plot_dias, avg_uts)
 
