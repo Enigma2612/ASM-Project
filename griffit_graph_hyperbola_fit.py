@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+BASE_PATH = "Graphs"
 
-#DATA HANDLING -------------------
+
+# DATA HANDLING -------------------
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
@@ -27,22 +29,22 @@ areas = np.array(dias)**2 * np.pi / 4
 
 dia_to_uts = {}
 
-for d,u in uts_vs_dia:
-    dia_to_uts[d] = dia_to_uts.get(d,[]) + [u]
+for d, u in uts_vs_dia:
+    dia_to_uts[d] = dia_to_uts.get(d, []) + [u]
 
 plot_dias = []
 avg_uts = []
 
-for d,u in dia_to_uts.items():
+for d, u in dia_to_uts.items():
     plot_dias.append(d)
     avg_uts.append(sum(u)/len(u))
 
 plot_areas = np.array(plot_dias)**2 * np.pi / 4
 
 
-#FUNCTIONS------------
-def hyberbola(x,y):
-    x,y = np.array(x), np.array(y)
+# FUNCTIONS------------
+def hyberbola(x, y):
+    x, y = np.array(x), np.array(y)
     X = 1 / x
     coeffs = np.polyfit(X, y, 1)
 
@@ -56,7 +58,7 @@ def hyberbola(x,y):
     return x_vals, y_vals
 
 
-#PLOTTING-------------
+# PLOTTING-------------
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
@@ -64,8 +66,9 @@ plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 plt.figure(figsize=(8, 5))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
-x,y, = hyberbola(plot_dias, avg_uts)
-plt.plot(x,y, alpha=0.7, color="#F07408", linewidth = 2.5, label=f'Hyperbolic Fit')
+x, y, = hyberbola(plot_dias, avg_uts)
+plt.plot(x, y, alpha=0.7, color="#F07408",
+         linewidth=2.5, label=f'Hyperbolic Fit')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -73,7 +76,8 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(fname='Graphs/uts_vs_dia_hyperbola_fit', dpi=600, bbox_inches='tight')
+plt.savefig(fname=f'{BASE_PATH}/uts_vs_dia_hyperbola_fit',
+            dpi=600, bbox_inches='tight')
 plt.show()
 
 
@@ -81,8 +85,9 @@ plt.show()
 plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-x,y = hyberbola(plot_areas, avg_uts)
-plt.plot(x,y, alpha = 0.7, color="#5A09BC", linewidth=2.5, label='Hyperbolic Fit')
+x, y = hyberbola(plot_areas, avg_uts)
+plt.plot(x, y, alpha=0.7, color="#5A09BC",
+         linewidth=2.5, label='Hyperbolic Fit')
 
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
@@ -90,5 +95,5 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig('Graphs/uts_vs_area_hyperbola_fit', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}/uts_vs_area_hyperbola_fit', dpi=600, bbox_inches='tight')
 plt.show()

@@ -1,8 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
+BASE_PATH = "Graphs"
 
-#DATA HANDLING -------------------
+
+# DATA HANDLING -------------------
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
@@ -27,25 +29,27 @@ areas = np.array(dias)**2 * np.pi / 4
 
 dia_to_uts = {}
 
-for d,u in uts_vs_dia:
-    if d == 10: continue
-    dia_to_uts[d] = dia_to_uts.get(d,[]) + [u]
+for d, u in uts_vs_dia:
+    if d == 10:
+        continue
+    dia_to_uts[d] = dia_to_uts.get(d, []) + [u]
 
 plot_dias = []
 avg_uts = []
 
-for d,u in dia_to_uts.items():
+for d, u in dia_to_uts.items():
     plot_dias.append(d)
     avg_uts.append(sum(u)/len(u))
 
 plot_areas = np.array(plot_dias)**2 * np.pi / 4
-    
-#FUNCTIONS------------
 
-def polynom_fit(x,y):
+# FUNCTIONS------------
+
+
+def polynom_fit(x, y):
     n_min = 0
     rmse_min = 10e10
-    for n in range(1,3):
+    for n in range(1, 3):
         coeffs = np.polyfit(x, y, n)
         x_vals = np.linspace(min(x), max(x), 100)
         y_vals = np.polyval(coeffs, x_vals)
@@ -54,10 +58,11 @@ def polynom_fit(x,y):
         if rmse < rmse_min:
             n_min = n
             rmse_min = rmse
-    
+
     return x_vals, y_vals, n_min
 
-#PLOTTING-------------
+# PLOTTING-------------
+
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
@@ -65,8 +70,9 @@ plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 plt.figure(figsize=(8, 5))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
-x,y,n = polynom_fit(plot_dias, avg_uts)
-plt.plot(x,y, alpha=0.7, color="#F07408", linewidth = 2.5, label=f'Polynomial Fit\nDegree = {n}')
+x, y, n = polynom_fit(plot_dias, avg_uts)
+plt.plot(x, y, alpha=0.7, color="#F07408", linewidth=2.5,
+         label=f'Polynomial Fit\nDegree = {n}')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -74,7 +80,7 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(fname='Graphs/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
 plt.show()
 
 
@@ -82,8 +88,9 @@ plt.show()
 plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-x,y,n = polynom_fit(plot_areas, avg_uts)
-plt.plot(x, y, alpha = 0.7, color="#5A09BC", linewidth=2.5, label=f'Polynomial Fit\nDegree = {n}')
+x, y, n = polynom_fit(plot_areas, avg_uts)
+plt.plot(x, y, alpha=0.7, color="#5A09BC", linewidth=2.5,
+         label=f'Polynomial Fit\nDegree = {n}')
 
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
@@ -91,5 +98,5 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig('Graphs/uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
 plt.show()
