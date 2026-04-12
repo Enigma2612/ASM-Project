@@ -13,7 +13,7 @@ Size Effect in Ultimate Tensile Strength of Brittle (and Ductile?) specimens
 
 ## Curve - fitting
 
-- Powerfit - Power law fit of form: Y = A * B^X
+- Powerfit - Power law fit of form: Y = A * X^B
 - Polyfit - Parabolic (polynomial) fit of form: Y = AX^2 + BX + C
 - Hyperbolic Fit - Rectangular Hyperbolic fit of form: Y = A + B/X
 - Scipy Fit - Fit using scipy.optimize library, of form: Y = A + B/(X - C) | Expression given in Gdoutos

@@ -8,16 +8,17 @@ BASE_PATH = "Graphs"
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
-    38.0, 37.8, 36.2, 42.1, 37.8,
-    44.8, 49.6, 55.9, 54.0, 48.7,
-    51.0, 62.6, 62.9, 63.8, 61.7
+    38.0, 37.8, 36.2, 
+    42.1, 37.8, 44.8, 
+    49.6, 55.9, 54.0, 
+    62.6, 62.9, 63.8
 ]
 diameters = [
     6, 6, 6, 6, 6,
     16, 16, 16,
     12, 12, 12,
-    8, 8, 8, 8, 8,
-    10, 10, 10, 10
+    8, 8, 8,
+    10, 10, 10
 ]
 
 uts_vs_dia = list(zip(diameters, UTS_vals))
@@ -51,7 +52,7 @@ def powerfit(x, y):
 
     x_vals = np.exp(x_vals)
     y_vals = np.exp(y_vals)
-    return x_vals, y_vals
+    return x_vals, y_vals, coeffs[1], coeffs[0]
 
 # PLOTTING-------------
 
@@ -64,10 +65,10 @@ plt.figure(figsize=(8, 5))
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
 # plt.plot(plot_dias, avg_uts, color='orange', linewidth=2.5, label='Trend')
 
-x, y = powerfit(plot_dias, avg_uts)
+x, y, a, b = powerfit(plot_dias, avg_uts)
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
-         linewidth=2.5, label='Power Law Fit')
+         linewidth=2.5, label=f'Power Law Fit: Y = A * X^B\nA = {a:.3f}\nB = {b:.3f}')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -83,9 +84,9 @@ plt.show()
 plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-x, y = powerfit(plot_areas, avg_uts)
+x, y, a, b = powerfit(plot_areas, avg_uts)
 plt.plot(x, y, alpha=0.7, color="#5A09BC",
-         linewidth=2.5, label='Power Law Fit')
+         linewidth=2.5, label=f'Power Law Fit: Y = A * X^B\nA = {a:.3f}\nB = {b:.3f}')
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
 plt.ylabel("UTS (MPa)", fontsize=12)

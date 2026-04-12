@@ -1,23 +1,24 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-BASE_PATH = "Graphs"
+BASE_PATH = "Graphs_without_10"
 
 
 # DATA HANDLING -------------------
 
 UTS_vals = [
     73.8, 75.2, 75.6, 69.0, 70.6,
-    38.0, 37.8, 36.2, 42.1, 37.8,
-    44.8, 49.6, 55.9, 54.0, 48.7,
-    51.0, 62.6, 62.9, 63.8, 61.7
+    38.0, 37.8, 36.2, 
+    42.1, 37.8, 44.8, 
+    49.6, 55.9, 54.0, 
+    62.6, 62.9, 63.8
 ]
 diameters = [
     6, 6, 6, 6, 6,
     16, 16, 16,
     12, 12, 12,
-    8, 8, 8, 8, 8,
-    10, 10, 10, 10
+    8, 8, 8,
+    10, 10, 10
 ]
 
 uts_vs_dia = list(zip(diameters, UTS_vals))
