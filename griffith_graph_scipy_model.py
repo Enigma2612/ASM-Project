@@ -12,14 +12,12 @@ UTS_vals = [
     38.0, 37.8, 36.2, 
     42.1, 37.8, 44.8, 
     49.6, 55.9, 54.0, 
-    62.6, 62.9, 63.8
 ]
 diameters = [
     6, 6, 6, 6, 6,
     16, 16, 16,
     12, 12, 12,
     8, 8, 8,
-    10, 10, 10
 ]
 
 uts_vs_dia = list(zip(diameters, UTS_vals))
@@ -72,8 +70,8 @@ plt.rcParams.update({
     'font.size': 14,          # base size
     'axes.titlesize': 18,     # title
     'axes.labelsize': 16,     # x/y labels
-    'xtick.labelsize': 13,
-    'ytick.labelsize': 13,
+    'xtick.labelsize': 14,
+    'ytick.labelsize': 14,
     'legend.fontsize': 14     # legend text
 })
 
@@ -89,9 +87,9 @@ x, y, a,b,c= scipy_fit(plot_dias, avg_uts)
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
 
-plt.title("UTS vs Diameter", fontsize=14, weight='bold')
-plt.xlabel("Diameter (mm)", fontsize=12)
-plt.ylabel("UTS (MPa)", fontsize=12)
+plt.title("UTS vs Diameter", weight='bold')
+plt.xlabel("Diameter (mm)")
+plt.ylabel("UTS (MPa)")
 
 plt.legend()
 plt.tight_layout()
@@ -108,9 +106,9 @@ x, y, a,b,c= scipy_fit(plot_areas, avg_uts)
 
 plt.plot(x, y, alpha=0.7, color="#5A09BC",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
-plt.title("UTS vs Area", fontsize=14, weight='bold')
-plt.xlabel("Area (mm²)", fontsize=12)
-plt.ylabel("UTS (MPa)", fontsize=12)
+plt.title("UTS vs Area", weight='bold')
+plt.xlabel("Area (mm²)")
+plt.ylabel("UTS (MPa)")
 
 plt.legend()
 plt.tight_layout()

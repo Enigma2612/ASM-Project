@@ -72,8 +72,8 @@ plt.rcParams.update({
     'font.size': 14,          # base size
     'axes.titlesize': 18,     # title
     'axes.labelsize': 16,     # x/y labels
-    'xtick.labelsize': 13,
-    'ytick.labelsize': 13,
+    'xtick.labelsize': 14,
+    'ytick.labelsize': 14,
     'legend.fontsize': 14     # legend text
 })
 
@@ -89,9 +89,9 @@ x, y, a,b,c,rmse= scipy_fit(plot_dias, avg_uts)
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}\nRMS Error = {rmse:.4f}')
 
-plt.title("UTS vs Diameter", fontsize=14, weight='bold')
-plt.xlabel("Diameter (mm)", fontsize=12)
-plt.ylabel("Average UTS (MPa)", fontsize=12)
+plt.title("UTS vs Diameter", weight='bold')
+plt.xlabel("Diameter (mm)")
+plt.ylabel("Average UTS (MPa)")
 
 plt.legend()
 plt.tight_layout()

@@ -63,11 +63,10 @@ plt.rcParams.update({
     'font.size': 14,          # base size
     'axes.titlesize': 18,     # title
     'axes.labelsize': 16,     # x/y labels
-    'xtick.labelsize': 13,
-    'ytick.labelsize': 13,
+    'xtick.labelsize': 14,
+    'ytick.labelsize': 14,
     'legend.fontsize': 14     # legend text
 })
-
 
 
 # ---- Plot 1: UTS vs Diameter ----
@@ -80,9 +79,9 @@ x, y, a, b = powerfit(plot_dias, avg_uts)
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Power Law Fit: Y = A * X^B\nA = {a:.3f}\nB = {b:.3f}')
 
-plt.title("UTS vs Diameter", fontsize=14, weight='bold')
-plt.xlabel("Diameter (mm)", fontsize=12)
-plt.ylabel("UTS (MPa)", fontsize=12)
+plt.title("UTS vs Diameter", weight='bold')
+plt.xlabel("Diameter (mm)")
+plt.ylabel("UTS (MPa)")
 
 plt.legend()
 plt.tight_layout()
