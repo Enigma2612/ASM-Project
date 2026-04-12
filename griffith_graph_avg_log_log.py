@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.optimize import curve_fit
 
-BASE_PATH = "."
+BASE_PATH = "Other Graphs/"
 
 
 # DATA HANDLING -------------------
@@ -62,6 +62,14 @@ def scipy_fit(x, y):
 
     return x_vals, y_vals, a, b, c, rmse
 
+def polynom_fit(x, y):
+    coeffs = np.polyfit(x, y, 1)
+    x_vals = np.linspace(min(x), max(x), 100)
+    y_vals = np.polyval(coeffs, x_vals)
+    y_comp_vals = np.polyval(coeffs, x)
+    rmse = np.sum((y_comp_vals - y)**2) / len(y_comp_vals)
+    return x_vals, y_vals, rmse
+
 
 # PLOTTING-------------
 
@@ -71,37 +79,37 @@ plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 # ---- Plot 1: UTS vs Diameter ----
 plt.figure(figsize=(8, 5))
 
-plt.scatter(plot_dias, avg_uts, s=50, alpha=0.7, label='Data')
+plt.scatter(np.log(plot_dias), np.log(avg_uts), s=50, alpha=0.7, label='Data')
 
-x, y, a,b,c,rmse= scipy_fit(plot_dias, avg_uts)
+x,y, rmse = polynom_fit(np.log(plot_dias), np.log(avg_uts))
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
-         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}\nRMS Error = {rmse:.4f}')
+         linewidth=2.5, label=f'Linear Fit\nRMS Error = {rmse:.4f}')
 
-plt.title("UTS vs Diameter", fontsize=14, weight='bold')
-plt.xlabel("Diameter (mm)", fontsize=12)
-plt.ylabel("Average UTS (MPa)", fontsize=12)
+plt.title("UTS vs Diameter (log - log)", fontsize=14, weight='bold')
+plt.xlabel("log Diameter (mm)", fontsize=12)
+plt.ylabel("log Average UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(fname=f'{BASE_PATH}/uts_vs_dia_scipy_avg_without_10', dpi=600, bbox_inches='tight')
+plt.savefig(fname=f'{BASE_PATH}/uts_vs_dia_log_log_avg_without_10', dpi=600, bbox_inches='tight')
 plt.show()
 
 
 # ---- Plot 2: UTS vs Area ----
 plt.figure(figsize=(8, 5))
 
-plt.scatter(plot_areas, avg_uts, s=50, alpha=0.7, label='Data')
+plt.scatter(np.log(plot_areas), np.log(avg_uts), s=50, alpha=0.7, label='Data')
 
-x, y, a,b,c,rmse= scipy_fit(plot_areas, avg_uts)
+x, y, rmse = polynom_fit(np.log(plot_areas), np.log(avg_uts))
 
 plt.plot(x, y, alpha=0.7, color="#5A09BC",
-         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}\nRMS Error = {rmse:.4f}')
-plt.title("UTS vs Area", fontsize=14, weight='bold')
-plt.xlabel("Area (mm²)", fontsize=12)
-plt.ylabel("Average UTS (MPa)", fontsize=12)
+         linewidth=2.5, label=f'Linear Fit\nRMS Error = {rmse:.4f}')
+plt.title("UTS vs Area (log - log)", fontsize=14, weight='bold')
+plt.xlabel("log Area (mm²)", fontsize=12)
+plt.ylabel("log Average UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(f'{BASE_PATH}/uts_vs_area_scipy_avg_without_10', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}/uts_vs_area_log_log_avg_without_10', dpi=600, bbox_inches='tight')
 plt.show()

@@ -80,7 +80,7 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(f'{BASE_PATH}/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
+# plt.savefig(f'{BASE_PATH}/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
 plt.show()
 
 
@@ -98,5 +98,5 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-plt.savefig(f'{BASE_PATH}/uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
+# plt.savefig(f'{BASE_PATH}/uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
 plt.show()
