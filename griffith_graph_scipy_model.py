@@ -44,17 +44,6 @@ plot_areas = np.array(plot_dias)**2 * np.pi / 4
 
 # FUNCTIONS-----------
 
-
-def powerfit(x, y):
-    coeffs = np.polyfit(np.log(x), np.log(y), 1)
-    x_vals = np.linspace(np.log(min(x)), np.log(max(x)), 100)
-    y_vals = np.polyval(coeffs, x_vals)
-
-    x_vals = np.exp(x_vals)
-    y_vals = np.exp(y_vals)
-    return x_vals, y_vals
-
-
 def scipy_fit(x, y):
     x = np.array(x)
     y = np.array(y)
@@ -86,7 +75,7 @@ plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
 x, y, a,b,c= scipy_fit(plot_dias, avg_uts)
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
-         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a}\nB = {b}\nC = {c}')
+         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -106,7 +95,7 @@ plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
 x, y, a,b,c= scipy_fit(plot_areas, avg_uts)
 
 plt.plot(x, y, alpha=0.7, color="#5A09BC",
-         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a}\nB = {b}\nC = {c}')
+         linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
 plt.ylabel("UTS (MPa)", fontsize=12)

@@ -50,7 +50,7 @@ plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 plt.figure(figsize=(8, 5))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
-plt.plot(plot_dias, avg_uts, color="#F07408", linewidth=2.5, label='Trend')
+plt.plot(plot_dias, avg_uts, color="#F07408", alpha=0.7, linewidth=2.5, label='Trend')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -66,7 +66,7 @@ plt.show()
 plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-plt.plot(plot_areas, avg_uts, color="#5A09BC", linewidth=2.5, label='Trend')
+plt.plot(plot_areas, avg_uts, color="#5A09BC", alpha=0.7, linewidth=2.5, label='Trend')
 
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)

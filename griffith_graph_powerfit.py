@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 BASE_PATH = "Graphs"
 
 
-
 # DATA HANDLING -------------------
 
 UTS_vals = [
