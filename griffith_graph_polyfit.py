@@ -66,6 +66,16 @@ def polynom_fit(x, y):
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
+plt.rcParams.update({
+    'font.size': 14,          # base size
+    'axes.titlesize': 18,     # title
+    'axes.labelsize': 16,     # x/y labels
+    'xtick.labelsize': 13,
+    'ytick.labelsize': 13,
+    'legend.fontsize': 14     # legend text
+})
+
+
 # ---- Plot 1: UTS vs Diameter ----
 plt.figure(figsize=(8, 5))
 
@@ -80,7 +90,7 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-# plt.savefig(f'{BASE_PATH}/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}/uts_vs_dia_polyfit', dpi=600, bbox_inches='tight')
 plt.show()
 
 
@@ -98,5 +108,5 @@ plt.ylabel("UTS (MPa)", fontsize=12)
 
 plt.legend()
 plt.tight_layout()
-# plt.savefig(f'{BASE_PATH}/uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
+plt.savefig(f'{BASE_PATH}/uts_vs_area_polyfit', dpi=600, bbox_inches='tight')
 plt.show()

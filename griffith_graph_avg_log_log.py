@@ -76,6 +76,15 @@ def polynom_fit(x, y):
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
+plt.rcParams.update({
+    'font.size': 14,          # base size
+    'axes.titlesize': 18,     # title
+    'axes.labelsize': 16,     # x/y labels
+    'xtick.labelsize': 13,
+    'ytick.labelsize': 13,
+    'legend.fontsize': 14     # legend text
+})
+
 # ---- Plot 1: UTS vs Diameter ----
 plt.figure(figsize=(8, 5))
 
@@ -91,7 +100,6 @@ plt.xlabel("log Diameter (mm)", fontsize=12)
 plt.ylabel("log Average UTS (MPa)", fontsize=12)
 
 plt.legend()
-plt.tight_layout()
 plt.savefig(fname=f'{BASE_PATH}/uts_vs_dia_log_log_avg_without_10', dpi=600, bbox_inches='tight')
 plt.show()
 

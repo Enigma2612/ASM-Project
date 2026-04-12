@@ -47,12 +47,21 @@ plot_areas = np.array(plot_dias)**2 * np.pi / 4
 
 plt.style.use('seaborn-v0_8-whitegrid')  # clean modern style
 
+plt.rcParams.update({
+    'font.size': 14,          # base size
+    'axes.titlesize': 18,     # title
+    'axes.labelsize': 16,     # x/y labels
+    'xtick.labelsize': 13,
+    'ytick.labelsize': 13,
+    'legend.fontsize': 14     # legend text
+})
+
+
 # ---- Plot 1: UTS vs Diameter ----
 plt.figure(figsize=(8, 5))
 
-plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
-plt.plot(plot_dias, avg_uts, color="#F07408",
-         alpha=0.7, linewidth=2.5, label='Trend')
+plt.scatter(dias, uts, s=50, alpha=0.7)
+# plt.plot(plot_dias, avg_uts, color="#F07408", alpha=0.7, linewidth=2.5, label='Trend')
 
 plt.title("UTS vs Diameter", fontsize=14, weight='bold')
 plt.xlabel("Diameter (mm)", fontsize=12)
@@ -67,9 +76,8 @@ plt.show()
 # ---- Plot 2: UTS vs Area ----
 plt.figure(figsize=(8, 5))
 
-plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
-plt.plot(plot_areas, avg_uts, color="#5A09BC",
-         alpha=0.7, linewidth=2.5, label='Trend')
+plt.scatter(areas, uts, s=50, alpha=0.7)
+# plt.plot(plot_areas, avg_uts, color="#5A09BC", alpha=0.7, linewidth=2.5, label='Trend')
 
 plt.title("UTS vs Area", fontsize=14, weight='bold')
 plt.xlabel("Area (mm²)", fontsize=12)
