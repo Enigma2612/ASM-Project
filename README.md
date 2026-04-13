@@ -17,3 +17,9 @@ Size Effect in Ultimate Tensile Strength of Brittle (and Ductile?) specimens
 - Polyfit - Parabolic (polynomial) fit of form: Y = AX^2 + BX + C
 - Hyperbolic Fit - Rectangular Hyperbolic fit of form: Y = A + B/X
 - Scipy Fit - Fit using scipy.optimize library, of form: Y = A + B/(X - C) | Expression given in Gdoutos
+
+## To Do
+- Plot graphs of all measured quantities vs Diameter
+- Get account of how many specimens we tested, and send to Nidish sir
+- Analyse different failure modes of acrylic
+- Buy DVD and get data from lab
