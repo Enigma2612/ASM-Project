@@ -109,12 +109,12 @@ def confidence_interval(x, popt, v):
     return np.array(sig_y)
 
 sigma_y = confidence_interval(x, popt, v)
-ci_95 = 1.96 * sigma_y
+ci_95 = 2.776 * sigma_y
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}\nRMS Error = {rmse:.4f}')
 plt.fill_between(x, y - ci_95, y + ci_95, color='red', alpha=0.2, label='95% Confidence Interval')
-plt.title("UTS vs Diameter", weight='bold')
+plt.title("UTS vs Diameter (Without 10mm)", weight='bold')
 plt.xlabel("Diameter (mm)")
 plt.ylabel("Average UTS (MPa)")
 

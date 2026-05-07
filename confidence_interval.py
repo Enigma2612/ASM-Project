@@ -84,7 +84,7 @@ plt.figure(figsize=(12, 6))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
 
-x, y, a,b,c,rmse,v, popt= scipy_fit(plot_dias, avg_uts)
+x, y, a,b,c,rmse,v, popt= scipy_fit(dias, uts)
 
 def model(x, a, b, c):
         return a + b/(x-c)
@@ -111,7 +111,7 @@ def confidence_interval(x, popt, v):
     return np.array(sig_y)
 
 sigma_y = confidence_interval(x, popt, v)
-ci_95 = 1.96 * sigma_y
+ci_95 = 2.776 * sigma_y
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}\nRMS Error = {rmse:.4f}')
