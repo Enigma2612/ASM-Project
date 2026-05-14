@@ -119,5 +119,6 @@ plt.xlabel("Diameter (mm)")
 plt.ylabel("Average UTS (MPa)")
 
 plt.legend(frameon=True)
+plt.savefig("Graphs/confidence_no_10", dpi=600, bbox_inches='tight')
 plt.tight_layout()
 plt.show()

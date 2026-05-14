@@ -122,4 +122,5 @@ plt.ylabel("Average UTS (MPa)")
 
 plt.legend(frameon=True)
 plt.tight_layout()
+plt.savefig("Graphs/confidence", dpi=600, bbox_inches='tight')
 plt.show()
