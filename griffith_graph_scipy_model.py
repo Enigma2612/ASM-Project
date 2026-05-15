@@ -12,12 +12,14 @@ UTS_vals = [
     38.0, 37.8, 36.2, 
     42.1, 37.8, 44.8, 
     49.6, 55.9, 54.0, 
+    62.6, 62.9, 63.8
 ]
 diameters = [
     6, 6, 6, 6, 6,
     16, 16, 16,
     12, 12, 12,
     8, 8, 8,
+    10, 10, 10
 ]
 
 uts_vs_dia = list(zip(diameters, UTS_vals))
@@ -82,7 +84,7 @@ plt.figure(figsize=(8, 5))
 
 plt.scatter(dias, uts, s=50, alpha=0.7, label='Data')
 
-x, y, a,b,c= scipy_fit(plot_dias, avg_uts)
+x, y, a,b,c= scipy_fit(dias, uts)
 
 plt.plot(x, y, alpha=0.7, color="#F07408",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
@@ -102,7 +104,7 @@ plt.figure(figsize=(8, 5))
 
 plt.scatter(areas, uts, s=50, alpha=0.7, label='Data')
 
-x, y, a,b,c= scipy_fit(plot_areas, avg_uts)
+x, y, a,b,c= scipy_fit(areas, uts)
 
 plt.plot(x, y, alpha=0.7, color="#5A09BC",
          linewidth=2.5, label=f'Best Fit of form Y = A + B/(X - C)\nA = {a:.3f}\nB = {b:.3f}\nC = {c:.3f}')
